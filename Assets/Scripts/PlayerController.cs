@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody rb;
-    GameObject cameraHolder;
 
     [Header("Look")]
     [SerializeField] private Vector2 mouseSensitivity;
@@ -19,32 +18,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxMoveSpeed;
     Vector2 move;
 
-    [Header("GroundCheck")]
-    [SerializeField] bool isGrounded;
-    [SerializeField] float playerWidth;
-    [SerializeField] float playerHeigth;
-
     void Start()
     {
-        PlayerValueSetup();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
-    private void PlayerValueSetup()
-    {
-        playerWidth = 0.5f;
-    }
 
     // Update is called once per frame
     void Update()
-    {
-        GroundCheck();
-    }
-
-    private void GroundCheck()
     {
 
     }
@@ -60,27 +42,13 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-
-        moveSpeed *= new Vector3(move.x,0,move.y) * moveSpeedMultiplier;
-        rb.AddForce(moveSpeed, ForceMode.Force);
-
+        rb.velocity = 
     }
 
     private void Look()
     {
 
     }
-
-    public void OnJump()
-    {
-        Jump();
-    }
-
-    private void Jump()
-    {
-
-    }
-
 
     public void OnMove(InputAction.CallbackContext context)
     {
