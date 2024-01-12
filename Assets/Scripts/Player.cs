@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     private bool isWalking;
     private void Update()
     {
-
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
         Vector3 moveDirection = new Vector3(inputVector.x, 0f, inputVector.y);
         transform.position += moveDirection * movespeed * Time.deltaTime;
