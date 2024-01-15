@@ -8,5 +8,4 @@ public class ClearCounter : MonoBehaviour
     {
         Debug.Log("interact");
     }
-
 }
