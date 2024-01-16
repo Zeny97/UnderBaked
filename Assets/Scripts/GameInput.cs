@@ -23,6 +23,7 @@ public class GameInput : MonoBehaviour
     {
         Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
         // Player has the same magnitude in all directions including diagonal
+        
         inputVector = inputVector.normalized;
         return inputVector;
     }

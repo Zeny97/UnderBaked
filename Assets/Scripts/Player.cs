@@ -12,8 +12,6 @@ public class Player : MonoBehaviour
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask countersLayerMask;
 
-
-
     private bool isWalking;
     private Vector3 lastInteractDirection;
     private void Update()
@@ -26,6 +24,7 @@ public class Player : MonoBehaviour
     {
         return isWalking;
     }
+
     private void HandleInteractions()
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
