@@ -1,12 +1,7 @@
-using Interfaces;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.ProBuilder.MeshOperations;
+
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
@@ -16,7 +11,7 @@ public class Player : MonoBehaviour
 
     [Header("Movement")]
     private Vector2 inputVector;
-    [Range(0f, 1000f)] [SerializeField] private float movespeed = 200f;
+    [Range(0f, 1000f)] [SerializeField] private float movespeed = 600f;
     [Range(0f, 20f)] [SerializeField] private float rotationSpeed = 10f;
 
     [Header("Animation")]
@@ -58,6 +53,7 @@ public class Player : MonoBehaviour
         Vector3 moveDirection = new Vector3(inputVector.x, 0f, inputVector.y);
         float moveDistance = movespeed * Time.deltaTime;
         rb.velocity = moveDirection * moveDistance;
+        Debug.Log(rb.velocity);
 
         // parameter for Animation
         isWalking = moveDirection != Vector3.zero;
@@ -72,10 +68,11 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.forward, out hit, interactDistance, countersLayerMask))
         {
-            GameObject hitObject = hit.transform.gameObject;
-            if (hitObject != null)
+            ICounterInteraction counter = hit.collider.GetComponent<ICounterInteraction>();
+
+            if (counter != null)
             {
-                hitObject.GetComponent<IInteractable>().Interact();
+                counter.Interact();
             }
         }
     }

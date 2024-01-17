@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrashCounter : MonoBehaviour , ICounterInteraction
+public class StoveCounter : MonoBehaviour , ICounterInteraction
 {
     public void Interact()
     {
