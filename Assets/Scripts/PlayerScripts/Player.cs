@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     {
         inputVector = callbackContext.ReadValue<Vector2>();
     }
-    private void OnInteract(InputAction.CallbackContext context)
+    public void OnInteract(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
@@ -53,7 +53,6 @@ public class Player : MonoBehaviour
         Vector3 moveDirection = new Vector3(inputVector.x, 0f, inputVector.y);
         float moveDistance = movespeed * Time.deltaTime;
         rb.velocity = moveDirection * moveDistance;
-        Debug.Log(rb.velocity);
 
         // parameter for Animation
         isWalking = moveDirection != Vector3.zero;
@@ -68,11 +67,11 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.forward, out hit, interactDistance, countersLayerMask))
         {
-            ICounterInteraction counter = hit.collider.GetComponent<ICounterInteraction>();
+            IInteractable InteractObject = hit.collider.GetComponent<IInteractable>();
 
-            if (counter != null)
+            if (InteractObject != null)
             {
-                counter.Interact();
+                InteractObject.Interact();
             }
         }
     }

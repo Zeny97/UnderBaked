@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CuttingCounter : MonoBehaviour , ICounterInteraction
+public class CuttingCounter : CounterObject
 {
-    public void Interact()
+    public override void InteractWithCounter()
     {
-        Debug.Log("This is a:" + this.gameObject.name);
+    
     }
 }
