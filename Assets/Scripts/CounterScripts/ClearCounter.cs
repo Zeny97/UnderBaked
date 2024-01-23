@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class ClearCounter : CounterObject
 {
+    [SerializeField] private Player _player;
     public override void InteractWithCounter()
     {
-        
+        if (ItemManager.Instance.HasItem())
+        {
+
+        }
+
     }
 }
