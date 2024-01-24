@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     {
         if (context.performed)
         {
-            HandleInteractions();
+            HandleInteraction();
         }
     }
     public bool IsWalking()
@@ -61,11 +61,11 @@ public class Player : MonoBehaviour
         transform.forward = Vector3.Slerp(transform.forward, moveDirection, rotationSpeed * Time.deltaTime);
     }
 
-    private void HandleInteractions()
+    private void HandleInteraction()
     {
         float interactDistance = 2f;
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.forward, out hit, interactDistance, countersLayerMask))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, interactDistance, countersLayerMask))
         {
             IInteractable InteractObject = hit.collider.GetComponent<IInteractable>();
 

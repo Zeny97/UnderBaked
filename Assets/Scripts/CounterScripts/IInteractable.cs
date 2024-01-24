@@ -14,13 +14,3 @@ public abstract class CounterObject : MonoBehaviour, IInteractable
 
     public abstract void InteractWithCounter();
 }
-
-public abstract class Item : MonoBehaviour, IInteractable
-{
-    public void Interact()
-    {
-        InteractWithItem();
-    }
-
-    public abstract void InteractWithItem();
-}

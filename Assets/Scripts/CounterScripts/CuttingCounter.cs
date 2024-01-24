@@ -1,11 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CuttingCounter : CounterObject
+public class CuttingCounter : ClearCounter
 {
-    public override void InteractWithCounter()
-    {
     
+
+    private void Update()
+    {
+        CheckCuttableObject();
+
+    }
+
+    private void CheckCuttableObject()
+    {
+        if (ingredient.IsCuttable)
+        {
+
+        }
     }
 }
