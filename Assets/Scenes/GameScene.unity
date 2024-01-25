@@ -2726,7 +2726,7 @@ PrefabInstance:
         type: 3}
       propertyPath: itemToSpawn
       value: 
-      objectReference: {fileID: 3812876574508226177, guid: 44325c67017631342b5f02792113e57b,
+      objectReference: {fileID: 3700458797333316227, guid: 61bc103a4ec2a64409cfc6ec7fd5efe7,
         type: 3}
     - target: {fileID: 8952873988187305813, guid: 4714801b03fb9694c9e9211b02cf7da0,
         type: 3}
@@ -2736,7 +2736,7 @@ PrefabInstance:
     - target: {fileID: 8952873988187305813, guid: 4714801b03fb9694c9e9211b02cf7da0,
         type: 3}
       propertyPath: timeBetweenSpawns
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

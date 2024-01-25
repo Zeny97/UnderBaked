@@ -47,6 +47,7 @@ public class ClearCounter : CounterObject
         // Transfer the item to the other object's ItemHolder
         item.SetParent(counterItemHolder.transform);
         item.position = counterItemHolder.transform.position;
+        item.rotation = counterItemHolder.transform.rotation;
         ingredient = item.GetComponent<Item>();
     }
     protected virtual void OnPlayerHasNoItemCounterHasNoItem()

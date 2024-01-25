@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4411471890408724096}
-  - component: {fileID: 4567492736285269043}
+  - component: {fileID: 8063955862558110683}
   m_Layer: 0
   m_Name: Tomato
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 5247171038888497543}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4567492736285269043
+--- !u!114 &8063955862558110683
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,11 +42,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5118782730893318415}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d337bba3ad9a7343bd4f2ffb1af7001, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a03d91713f6aed408ac19892e9b1e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCuttable: 1
-  itemType: 7
+  itemType: 9
+  cuttedItem: {fileID: 2532694824399523261, guid: c484a1326863b7a419b78ef6febc5203,
+    type: 3}
 --- !u!1001 &8951956807091357447
 PrefabInstance:
   m_ObjectHideFlags: 0

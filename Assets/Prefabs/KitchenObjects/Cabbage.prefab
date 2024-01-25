@@ -45,8 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d337bba3ad9a7343bd4f2ffb1af7001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCuttable: 1
-  itemType: 3
+  itemType: 5
 --- !u!1001 &1877549022535219666
 PrefabInstance:
   m_ObjectHideFlags: 0

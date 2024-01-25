@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6748705405233540704}
   - component: {fileID: 8952873988187305813}
   m_Layer: 6
-  m_Name: ContainerCounter
+  m_Name: ContainerCounterCheese
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d1386ff1d67974e82ae9c3f0164df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  counterItemHolder: {fileID: 0}
   ingredient: {fileID: 0}
+  itemToSpawn: {fileID: 3700458797333316227, guid: 61bc103a4ec2a64409cfc6ec7fd5efe7,
+    type: 3}
+  timeBetweenSpawns: 0
 --- !u!1001 &1640140336680829711
 PrefabInstance:
   m_ObjectHideFlags: 0

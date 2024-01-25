@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCuttable: 0
-  itemType: 4
+  isCookable: 0
+  itemType: 6
 --- !u!1001 &1574747656864325514
 PrefabInstance:
   m_ObjectHideFlags: 0
