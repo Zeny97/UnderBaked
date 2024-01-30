@@ -6,13 +6,14 @@ using UnityEngine;
 
 public class CuttingCounter : ClearCounter
 {
-    [SerializeField] private float timeToCut = 5f;
-    private float remainingCuttingTime;
-    private CuttableItem cuttableItem;
+    [SerializeField] private CuttableItem cuttableItem;
+    [SerializeField] private ProgressBar progressBar;
+    [SerializeField] private float totalCutTime = 5f;
+    private float currentCuttingTime = 0f;
 
-    private void Awake()
+    private void Start()
     {
-        remainingCuttingTime = timeToCut;
+        progressBar.transform.gameObject.SetActive(false);
     }
     private void Update()
     {
@@ -23,13 +24,16 @@ public class CuttingCounter : ClearCounter
     {
         if( cuttableItem != null)
         {
-            if ( remainingCuttingTime > 0f ) 
+            progressBar.transform.gameObject.SetActive(true);
+            progressBar.UpdateProgressBar(currentCuttingTime, totalCutTime);
+            if ( currentCuttingTime < totalCutTime ) 
             {
-                remainingCuttingTime -= Time.deltaTime;
-                if ( remainingCuttingTime <= 0f )
+                currentCuttingTime += Time.deltaTime;
+                if ( currentCuttingTime >= totalCutTime )
                 {
                     OnFinishedCutting();
-                    remainingCuttingTime = timeToCut;
+                    progressBar.transform.gameObject.SetActive(false);
+                    currentCuttingTime = 0;
                 }
             }
         }
