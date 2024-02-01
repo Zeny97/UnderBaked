@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07aa08e721d9e974c9d460157a564b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 3
   cookedItem: {fileID: 7372554586345367671, guid: c4764bbbfeecfca49aa93f4966e28dbe,
     type: 3}
 --- !u!1001 &3032054917053318501

@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6748705405233540704}
   - component: {fileID: 8952873988187305813}
   m_Layer: 6
-  m_Name: ContainerCounterCheese
+  m_Name: ContainerCounterTomato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,11 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d1386ff1d67974e82ae9c3f0164df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counterItemHolder: {fileID: 0}
+  counterItemHolder: {fileID: 2922229650614952176}
   ingredient: {fileID: 0}
-  itemToSpawn: {fileID: 3700458797333316227, guid: 61bc103a4ec2a64409cfc6ec7fd5efe7,
+  itemToSpawn: {fileID: 5118782730893318415, guid: 73011a0147ace2f40995f3c77edc9f74,
     type: 3}
-  timeBetweenSpawns: 0
+  timeBetweenSpawns: 2
 --- !u!1001 &1640140336680829711
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -166,6 +166,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4841286013473667211, guid: 9a9137fa2b035d34e881701d2c178192,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4841286013473667211, guid: 9a9137fa2b035d34e881701d2c178192,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4841286013473667211, guid: 9a9137fa2b035d34e881701d2c178192,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 91e8fe3de9249fc44b7bdd8050062896,
+        type: 3}
+    - target: {fileID: 4841286013473667211, guid: 9a9137fa2b035d34e881701d2c178192,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

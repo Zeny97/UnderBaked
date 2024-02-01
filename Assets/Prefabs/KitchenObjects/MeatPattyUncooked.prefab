@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07aa08e721d9e974c9d460157a564b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cookedItem: {fileID: 4794803288515659609, guid: 08a5c5622154fe845bf8e0c3842aee66,
+  itemType: 2
+  cookedItem: {fileID: 4491627419655536313, guid: 08a5c5622154fe845bf8e0c3842aee66,
     type: 3}
 --- !u!1001 &8760759093663966678
 PrefabInstance:

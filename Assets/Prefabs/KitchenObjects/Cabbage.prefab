@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6636168810806560812}
-  - component: {fileID: 7409025775096293576}
+  - component: {fileID: -5840407810680616780}
   m_Layer: 0
   m_Name: Cabbage
   m_TagString: Untagged
@@ -26,14 +26,14 @@ Transform:
   m_GameObject: {fileID: 6216578654340880020}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.29609185, y: -2.646497, z: 7.113258}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3378944266413764434}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7409025775096293576
+--- !u!114 &-5840407810680616780
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,10 +42,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6216578654340880020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d337bba3ad9a7343bd4f2ffb1af7001, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a03d91713f6aed408ac19892e9b1e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 5
+  cuttedItem: {fileID: 2461650019804085061, guid: 25b6c7f1d380f604f868154d4da12cd2,
+    type: 3}
 --- !u!1001 &1877549022535219666
 PrefabInstance:
   m_ObjectHideFlags: 0

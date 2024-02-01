@@ -59,7 +59,7 @@ public class BaseCounter : CounterObject
             Plate plate = ingredient.GetComponent<Plate>();
             if (!plate.PutItemOnPlate(item.GetComponent<Item>()))
             {
-                ItemManager.Instance.TransferSpecificKitchenObjectToPlayer(item);
+                ItemManager.Instance.TransferSpecificItemToPlayer(item);
             }
             
             return;
@@ -74,7 +74,7 @@ public class BaseCounter : CounterObject
     protected virtual void OnPlayerReceivesItem()
     {
         // Player receives Item from Counter
-        ItemManager.Instance.TransferKitchenObjectFromCounterToPlayer(counterItemHolder);
+        ItemManager.Instance.TransferItemFromCounterToPlayer(counterItemHolder);
         ingredient = null;
     }
 

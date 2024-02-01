@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CookableItem : MonoBehaviour
+public class CookableItem : Item
 {
     [SerializeField] protected Item cookedItem;
 
