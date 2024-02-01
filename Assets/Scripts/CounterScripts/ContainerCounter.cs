@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class ContainerCounter : ClearCounter
+public class ContainerCounter : BaseCounter
 {
     [SerializeField] protected GameObject itemToSpawn;
     [SerializeField] private float timeBetweenSpawns;

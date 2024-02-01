@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditorInternal;
 using UnityEngine;
 
-public class CuttingCounter : ClearCounter
+public class CuttingCounter : BaseCounter
 {
     [SerializeField] private CuttableItem cuttableItem;
     [SerializeField] private ProgressBar progressBar;
@@ -18,12 +19,14 @@ public class CuttingCounter : ClearCounter
     private void Update()
     {
         CheckCuttingProcess();
+        IsCutting();
     }
 
     private void CheckCuttingProcess()
     {
-        if( cuttableItem != null)
+        if(cuttableItem != null)
         {
+
             progressBar.transform.gameObject.SetActive(true);
             progressBar.UpdateProgressBar(currentCuttingTime, totalCutTime);
             if ( currentCuttingTime < totalCutTime ) 
@@ -50,9 +53,27 @@ public class CuttingCounter : ClearCounter
         ingredient = newItem.GetComponent<Item>();
     }
 
-    protected override void OnPlayerHasItemCounterHasNoItem()
+    protected override void OnCounterReceivesItem()
     {
-        base.OnPlayerHasItemCounterHasNoItem();
+        base.OnCounterReceivesItem();
         cuttableItem = ingredient.gameObject.GetComponent<CuttableItem>();
+    }
+
+    protected override void OnPlayerReceivesItem()
+    {
+        if (IsCutting())
+        {
+            return;
+        }
+        base.OnPlayerReceivesItem();
+    }
+
+    private bool IsCutting()
+    {
+        if(currentCuttingTime > 0 && currentCuttingTime < totalCutTime)
+        {
+            return true;
+        }
+        return false;
     }
 }

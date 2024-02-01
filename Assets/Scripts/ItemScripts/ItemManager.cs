@@ -31,6 +31,11 @@ public class ItemManager : MonoBehaviour
         return false;
     }
 
+    public Item.E_ItemIdentifier GetKitchenObject()
+    {
+        return playerItemHolder.GetComponentInChildren<Item.E_ItemIdentifier>();
+    }
+
     public Transform TransferKitchenObjectFromPlayerToCounter()
     {
         // Get the item from the player's ItemHolder
@@ -41,10 +46,16 @@ public class ItemManager : MonoBehaviour
     }
     public void TransferKitchenObjectFromCounterToPlayer(Transform _counterItemHolder)
     {
-        // Get the item from the Counters ItemHolder
+        // Get the item from the counter's ItemHolder
         Transform ingredient = _counterItemHolder.transform.GetChild(0);
-        Debug.Log(ingredient);
-        // Transfer the item to the other Players ItemHolder
+
+        // Transfer the item to the player's ItemHolder
+        ingredient.SetParent(playerItemHolder.transform);
+        ingredient.position = playerItemHolder.transform.position;
+    }
+
+    public void TransferSpecificKitchenObjectToPlayer(Transform ingredient)
+    {
         ingredient.SetParent(playerItemHolder.transform);
         ingredient.position = playerItemHolder.transform.position;
     }

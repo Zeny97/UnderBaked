@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoveCounter : ClearCounter
+public class StoveCounter : BaseCounter
 {
     [SerializeField] private float timeToCook = 5f;
     private float remainingCookingTime;
@@ -44,9 +44,9 @@ public class StoveCounter : ClearCounter
         ingredient = newItem.GetComponent<Item>();
     }
 
-    protected override void OnPlayerHasItemCounterHasNoItem()
+    protected override void OnPlayerReceivesItem()
     {
-        base.OnPlayerHasItemCounterHasNoItem();
+        base.OnPlayerReceivesItem();
         cookableItem = ingredient.gameObject.GetComponent<CookableItem>();
     }
 }

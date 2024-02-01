@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] private E_ItemIdentifier itemType;
+    public E_ItemIdentifier itemType;
 
     public enum E_ItemIdentifier
     {

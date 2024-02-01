@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrashCounter : ClearCounter
+public class TrashCounter : BaseCounter
 {
-    protected override void OnPlayerHasItemCounterHasNoItem()
+    protected override void OnCounterReceivesItem()
     {
-        Debug.Log("Ich werde zerstört");
         Transform item = ItemManager.Instance.TransferKitchenObjectFromPlayerToCounter();
         Destroy(item.gameObject);
     }
