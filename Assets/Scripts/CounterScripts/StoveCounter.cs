@@ -1,20 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StoveCounter : BaseCounter
 {
-    [SerializeField] private float timeToCook = 5f;
+    [SerializeField] private float totalCookingTime = 5f;
     private float remainingCookingTime;
     private CookableItem cookableItem;
 
     private void Awake()
     {
-        remainingCookingTime = timeToCook;
+        remainingCookingTime = 0f;
     }
     private void Update()
     {
         CheckCookingProcess();
+        IsCooking();
+    }
+
+    private void IsCooking()
+    {
+        if (remainingCookingTime > 0 && remainingCookingTime < totalCookingTime)
+        {
+
+        }
     }
 
     private void CheckCookingProcess()
@@ -27,7 +37,7 @@ public class StoveCounter : BaseCounter
                 if (remainingCookingTime <= 0f)
                 {
                     OnFinishedCooking();
-                    remainingCookingTime = timeToCook;
+                    remainingCookingTime = totalCookingTime;
                 }
             }
         }
@@ -44,9 +54,9 @@ public class StoveCounter : BaseCounter
         ingredient = newItem.GetComponent<Item>();
     }
 
-    protected override void OnPlayerReceivesItem()
+    protected override void OnCounterReceivesItem()
     {
-        base.OnPlayerReceivesItem();
+        base.OnCounterReceivesItem();
         cookableItem = ingredient.gameObject.GetComponent<CookableItem>();
     }
 }
