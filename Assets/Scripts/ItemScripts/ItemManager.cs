@@ -23,7 +23,7 @@ public class ItemManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    public bool HasKitchenObject() 
+    public bool PlayerHasKitchenObject() 
     {
         // Check if Player has Ingredients
         if(playerItemHolder.transform.childCount != 0 )
@@ -31,10 +31,10 @@ public class ItemManager : MonoBehaviour
         return false;
     }
 
-    public Item.E_ItemIdentifier GetKitchenObject()
-    {
-        return playerItemHolder.GetComponentInChildren<Item.E_ItemIdentifier>();
-    }
+    //public Item.E_ItemIdentifier GetKitchenObject()
+    //{
+    //    return playerItemHolder.GetComponentInChildren<Item.E_ItemIdentifier>();
+    //}
 
     public Transform TransferKitchenObjectFromPlayerToCounter()
     {

@@ -2,12 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CookableItem : Item
+public class CookableItem : ProcessableItem
 {
-    [SerializeField] protected Item cookedItem;
-
-    public Item CookedItem()
-    {
-        return cookedItem;
-    }
+    [SerializeField] private bool isCookable;
 }

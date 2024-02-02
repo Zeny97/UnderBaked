@@ -3,60 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoveCounter : BaseCounter
+public class StoveCounter : ProcessingCounter
 {
-    [SerializeField] private float totalCookingTime = 5f;
-    private float remainingCookingTime;
-    private CookableItem cookableItem;
-
-    private void Awake()
-    {
-        remainingCookingTime = 0f;
-    }
     private void Update()
     {
-        CheckCookingProcess();
-        IsCooking();
+        ProcessItem();
+        IsProcessing();
     }
 
-    private void IsCooking()
+    protected override void ProcessItem()
     {
-        if (remainingCookingTime > 0 && remainingCookingTime < totalCookingTime)
-        {
-
-        }
+        base.ProcessItem();
     }
 
-    private void CheckCookingProcess()
+    protected override void OnFinishedProcessingItem()
     {
-        if (cookableItem != null)
-        {
-            if (remainingCookingTime > 0f)
-            {
-                remainingCookingTime -= Time.deltaTime;
-                if (remainingCookingTime <= 0f)
-                {
-                    OnFinishedCooking();
-                    remainingCookingTime = totalCookingTime;
-                }
-            }
-        }
-    }
-
-    private void OnFinishedCooking()
-    {
-        GameObject newItem = Instantiate(cookableItem.CookedItem().gameObject);
-        newItem.transform.SetParent(ingredient.transform.parent);
-        newItem.transform.position = ingredient.transform.position;
-        newItem.transform.rotation = ingredient.transform.rotation;
-        Destroy(ingredient.gameObject);
-        cookableItem = null;
-        ingredient = newItem.GetComponent<Item>();
+        base.OnFinishedProcessingItem();
     }
 
     protected override void OnCounterReceivesItem()
     {
         base.OnCounterReceivesItem();
-        cookableItem = ingredient.gameObject.GetComponent<CookableItem>();
+    }
+
+    protected override bool IsProcessing()
+    {
+        return base.IsProcessing();
     }
 }

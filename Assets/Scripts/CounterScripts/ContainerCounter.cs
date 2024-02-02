@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class ContainerCounter : BaseCounter
 {
-    [SerializeField] protected GameObject itemToSpawn;
-    [SerializeField] private float timeBetweenSpawns;
+    [SerializeField] protected Item ItemToSpawn;
+    [SerializeField] private float TimeBetweenSpawns;
     private float currentTime;
-    protected virtual void OnTimerElapsed(GameObject _ingredient)
+    protected virtual void OnTimerElapsed(Item ingredient)
     {
-        GameObject spawnedIngredient= Instantiate(_ingredient, counterItemHolder.transform);
-        ingredient = spawnedIngredient.GetComponent<Item>();
+        Item spawnedIngredient= Instantiate(ingredient, CounterItemHolder.transform);
+        Ingredient = spawnedIngredient.GetComponent<Item>();
     }
     private void Start()
     {
-        currentTime = timeBetweenSpawns;
+        currentTime = TimeBetweenSpawns;
     }
     private void Update()
     {
@@ -24,10 +24,10 @@ public class ContainerCounter : BaseCounter
             currentTime -= Time.deltaTime;
             if ( currentTime <= 0 )
             {
-                currentTime = timeBetweenSpawns;
-                if (ingredient == null )
+                currentTime = TimeBetweenSpawns;
+                if (Ingredient == null )
                 {
-                    OnTimerElapsed(itemToSpawn);
+                    OnTimerElapsed(ItemToSpawn);
                 }
             }
         }

@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CuttableItem : Item
+public class CuttableItem : ProcessableItem
 {
-    [SerializeField] protected Item cuttedItem;
+    [SerializeField] private bool isCuttable;
 
-    public Item CuttedItem()
-    {
-        return cuttedItem;
-    }
+
 }

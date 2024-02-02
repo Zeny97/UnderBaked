@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class BaseCounter : CounterObject
 {
-    [SerializeField] protected Transform counterItemHolder;
-    [SerializeField] protected Item ingredient = null;
+    [SerializeField] protected Transform CounterItemHolder;
+    [SerializeField] protected Item Ingredient = null;
 
     public override void InteractWithCounter()
     {
-        if (ItemManager.Instance.HasKitchenObject())
+        if (ItemManager.Instance.PlayerHasKitchenObject())
         {
-            if (CheckIfCanReceive())
+            if (HasKitchenObject())
             {
                 OnBothHaveItems();
             }
@@ -24,7 +24,7 @@ public class BaseCounter : CounterObject
         }
         else
         {
-            if (ingredient == null)
+            if (Ingredient == null)
             {
                 OnNoneHaveItems();
             }
@@ -40,7 +40,6 @@ public class BaseCounter : CounterObject
 
     protected virtual void OnBothHaveItems()
     {
-        if(ItemManager.Instance.GetKitchenObject() == Item.E_ItemIdentifier.Plate)
         Debug.Log("Player and Counter have an Item.");
     }
 
@@ -54,9 +53,9 @@ public class BaseCounter : CounterObject
         // Player Has Item And Counter Has No Item
         Transform item = ItemManager.Instance.TransferKitchenObjectFromPlayerToCounter();
 
-        if (ingredient != null)
+        if (Ingredient != null)
         {
-            Plate plate = ingredient.GetComponent<Plate>();
+            Plate plate = Ingredient.GetComponent<Plate>();
             if (!plate.PutItemOnPlate(item.GetComponent<Item>()))
             {
                 ItemManager.Instance.TransferSpecificItemToPlayer(item);
@@ -65,33 +64,34 @@ public class BaseCounter : CounterObject
             return;
         }
         // Set Item to Counter's ItemHolder
-        item.SetParent(counterItemHolder.transform);
-        item.position = counterItemHolder.transform.position;
-        item.rotation = counterItemHolder.transform.rotation;
-        ingredient = item.GetComponent<Item>();
+        item.SetParent(CounterItemHolder.transform);
+        item.position = CounterItemHolder.transform.position;
+        item.rotation = CounterItemHolder.transform.rotation;
+        Ingredient = item.GetComponent<Item>();
     }
 
     protected virtual void OnPlayerReceivesItem()
     {
         // Player receives Item from Counter
-        ItemManager.Instance.TransferItemFromCounterToPlayer(counterItemHolder);
-        ingredient = null;
+        ItemManager.Instance.TransferItemFromCounterToPlayer(CounterItemHolder);
+        Ingredient = null;
     }
 
-    protected virtual bool CheckIfCanReceive()
+    protected virtual bool HasKitchenObject()
     {
-        // return false => CounterReceivesItem
+        // return false
+        if (Ingredient == null)
+        {
+            return false;
+        }
+
+        // Check if Item is => Plate 
+        if (Ingredient.itemType == Item.E_ItemIdentifier.Plate)
+        {
+            return false;
+        }
+
         // return true => BothHaveItems
-        if (ingredient == null)
-        {
-            return false;
-        }
-
-        if (ingredient.itemType == Item.E_ItemIdentifier.Plate)
-        {
-            return false;
-        }
-
-        return ingredient != null;
+        return Ingredient != null;
     }
 }
