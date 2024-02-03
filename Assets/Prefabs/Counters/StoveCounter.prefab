@@ -288,10 +288,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7031358715583499131, guid: 6ec0e32009adbd4489bc140ec5a078ca,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7685761571607882882, guid: 6ec0e32009adbd4489bc140ec5a078ca,
         type: 3}
       propertyPath: m_Name
       value: ProgressBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685761571607882882, guid: 6ec0e32009adbd4489bc140ec5a078ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

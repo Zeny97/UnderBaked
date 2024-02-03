@@ -44,10 +44,10 @@ public class ItemManager : MonoBehaviour
         return ingredient;
 
     }
-    public void TransferItemFromCounterToPlayer(Transform _counterItemHolder)
+    public void TransferItemFromCounterToPlayer(Transform counterItemHolder)
     {
         // Get the item from the counter's ItemHolder
-        Transform ingredient = _counterItemHolder.transform.GetChild(0);
+        Transform ingredient = counterItemHolder.transform.GetChild(0);
 
         // Transfer the item to the player's ItemHolder
         ingredient.SetParent(playerItemHolder.transform);

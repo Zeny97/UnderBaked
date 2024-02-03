@@ -45,9 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d337bba3ad9a7343bd4f2ffb1af7001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCuttable: 0
-  isCookable: 0
   itemType: 4
+  itemSprite: {fileID: 21300000, guid: 713ea9afa60dd6e4ebf6503a33e8cc99, type: 3}
 --- !u!1001 &3240846670198011969
 PrefabInstance:
   m_ObjectHideFlags: 0

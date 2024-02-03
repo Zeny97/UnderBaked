@@ -10,5 +10,6 @@ public class ProgressBar : MonoBehaviour
     public void UpdateProgressBar(float currentCuttingTime, float totalCutTime)
     {
         progressBarSprite.fillAmount = currentCuttingTime / totalCutTime;
+        // transform.LookAt(Camera.main.transform.position);
     }
 }

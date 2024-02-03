@@ -5,6 +5,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     public E_ItemIdentifier itemType;
+    public Sprite itemSprite;
 
     public enum E_ItemIdentifier
     {

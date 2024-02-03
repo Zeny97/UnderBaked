@@ -526,7 +526,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9133764400237174609}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.000000059604645}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -535,7 +535,7 @@ Transform:
   - {fileID: 197001383310862593}
   - {fileID: 8347757724086621398}
   m_Father: {fileID: 6312936564301959279}
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7367116741713589336
 Animator:
   serializedVersion: 5
@@ -665,10 +665,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7031358715583499131, guid: 6ec0e32009adbd4489bc140ec5a078ca,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7685761571607882882, guid: 6ec0e32009adbd4489bc140ec5a078ca,
         type: 3}
       propertyPath: m_Name
       value: ProgressBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685761571607882882, guid: 6ec0e32009adbd4489bc140ec5a078ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

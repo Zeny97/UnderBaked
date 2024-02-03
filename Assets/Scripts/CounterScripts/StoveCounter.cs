@@ -13,7 +13,12 @@ public class StoveCounter : ProcessingCounter
 
     protected override void ProcessItem()
     {
-        base.ProcessItem();
+        // Check Item type
+        if (ItemToProcess is CookableItem)
+        {
+            ItemToProcess = Ingredient.GetComponent<ProcessableItem>();
+            base.ProcessItem();
+        }
     }
 
     protected override void OnFinishedProcessingItem()

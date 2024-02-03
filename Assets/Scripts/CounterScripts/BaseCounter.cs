@@ -56,11 +56,12 @@ public class BaseCounter : CounterObject
         if (Ingredient != null)
         {
             Plate plate = Ingredient.GetComponent<Plate>();
+            
             if (!plate.PutItemOnPlate(item.GetComponent<Item>()))
             {
                 ItemManager.Instance.TransferSpecificItemToPlayer(item);
             }
-            
+            plate.UpdateVisual();
             return;
         }
         // Set Item to Counter's ItemHolder

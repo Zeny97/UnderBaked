@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 2
+  itemSprite: {fileID: 21300000, guid: aa1bacc24dde76e47b2ec0dd4e82385b, type: 3}
   processingTime: 5
   ResultingItem: {fileID: 4491627419655536313, guid: 08a5c5622154fe845bf8e0c3842aee66,
     type: 3}
-  isCookable: 1
 --- !u!1001 &8760759093663966678
 PrefabInstance:
   m_ObjectHideFlags: 0

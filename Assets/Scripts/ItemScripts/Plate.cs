@@ -10,6 +10,9 @@ public class Plate : Item
     [SerializeField] private Item[] itemsOnPlate;
     [SerializeField] private int curPlateItemAmount;
     [SerializeField] private Transform itemHolder;
+    [SerializeField] private Transform iconHolder;
+    [SerializeField] GameObject singleIcon;
+    private GameObject newIcon;
 
     private void Awake()
     {
@@ -39,8 +42,24 @@ public class Plate : Item
         item.transform.SetParent(itemHolder);
         item.transform.position = itemHolder.transform.position;
         item.transform.rotation = itemHolder.transform.rotation;
-
+        UpdateVisual();
         return true;
+    }
+
+
+
+    public void UpdateVisual()
+    {
+        foreach(Transform child in iconHolder.GetComponentsInChildren<Transform>())
+        {
+
+        }
+
+
+        foreach(Item item in itemsOnPlate)
+        {
+            newIcon  = Instantiate(singleIcon, iconHolder.transform);
+        }
     }
 
 

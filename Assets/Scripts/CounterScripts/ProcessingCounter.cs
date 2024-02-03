@@ -47,21 +47,21 @@ public class ProcessingCounter : BaseCounter
 
         // fill ingredient slot
         Ingredient = ResultingItem.GetComponent<Item>();
-
-
-        ItemToProcess = null;
     }
 
     protected override void OnCounterReceivesItem()
     {
         base.OnCounterReceivesItem();
+        ItemToProcess = Ingredient.GetComponent<ProcessableItem>();
     }
 
     protected override void OnPlayerReceivesItem()
     {
         if (IsProcessing())
         {
-            return;
+            CurrentProcessingTime = 0;
+            ProgressBar.transform.gameObject.SetActive(false);
+            ItemToProcess = null;
         }
         base.OnPlayerReceivesItem();
     }

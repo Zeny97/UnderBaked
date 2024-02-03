@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 9
+  itemSprite: {fileID: 21300000, guid: 91e8fe3de9249fc44b7bdd8050062896, type: 3}
   processingTime: 5
-  ResultingItem: {fileID: 2532694824399523261, guid: c484a1326863b7a419b78ef6febc5203,
+  ResultingItem: {fileID: -5060322275796120509, guid: c484a1326863b7a419b78ef6febc5203,
     type: 3}
-  isCuttable: 1
 --- !u!1001 &8951956807091357447
 PrefabInstance:
   m_ObjectHideFlags: 0

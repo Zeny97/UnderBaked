@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class CookableItem : ProcessableItem
 {
-    [SerializeField] private bool isCookable;
+
 }

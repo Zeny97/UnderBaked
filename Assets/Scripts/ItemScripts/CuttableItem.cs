@@ -4,7 +4,5 @@ using UnityEngine;
 
 public class CuttableItem : ProcessableItem
 {
-    [SerializeField] private bool isCuttable;
-
 
 }

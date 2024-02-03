@@ -101,9 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CounterItemHolder: {fileID: 2922229650614952176}
   Ingredient: {fileID: 0}
-  itemToSpawn: {fileID: 6216578654340880020, guid: f3ae01efab6d9564795f011034d9a73a,
+  ItemToSpawn: {fileID: -5840407810680616780, guid: f3ae01efab6d9564795f011034d9a73a,
     type: 3}
-  timeBetweenSpawns: 2
+  TimeBetweenSpawns: 0
 --- !u!1001 &1640140336680829711
 PrefabInstance:
   m_ObjectHideFlags: 0

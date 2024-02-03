@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 10
+  itemSprite: {fileID: 21300000, guid: c9f08c3c1ae2a364aaeaa3712540b1d4, type: 3}
   combinableItem: {fileID: -5060322275796120509}
 --- !u!1001 &4999872826309594878
 PrefabInstance:

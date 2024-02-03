@@ -13,7 +13,11 @@ public class CuttingCounter : ProcessingCounter
 
     protected override void ProcessItem()
     {
-        base.ProcessItem();
+        if (ItemToProcess is CuttableItem)
+        {
+            ItemToProcess = Ingredient.GetComponent<CuttableItem>();
+            base.ProcessItem();
+        }
     }
 
     protected override void OnFinishedProcessingItem()
