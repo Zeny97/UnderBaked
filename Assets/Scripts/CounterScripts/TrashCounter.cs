@@ -6,7 +6,7 @@ public class TrashCounter : BaseCounter
 {
     protected override void OnCounterReceivesItem()
     {
-        Transform item = ItemManager.Instance.TransferKitchenObjectFromPlayerToCounter();
+        Transform item = ItemManager.Instance.GetItemFromPlayer();
         Destroy(item.gameObject);
     }
 }

@@ -36,7 +36,7 @@ public class ItemManager : MonoBehaviour
     //    return playerItemHolder.GetComponentInChildren<Item.E_ItemIdentifier>();
     //}
 
-    public Transform TransferKitchenObjectFromPlayerToCounter()
+    public Transform GetItemFromPlayer()
     {
         // Get the item from the player's ItemHolder
         Transform ingredient = playerItemHolder.transform.GetChild(0);
@@ -44,7 +44,7 @@ public class ItemManager : MonoBehaviour
         return ingredient;
 
     }
-    public void TransferItemFromCounterToPlayer(Transform counterItemHolder)
+    public void GetItemFromCounter(Transform counterItemHolder)
     {
         // Get the item from the counter's ItemHolder
         Transform ingredient = counterItemHolder.transform.GetChild(0);

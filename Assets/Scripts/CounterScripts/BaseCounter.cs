@@ -51,7 +51,7 @@ public class BaseCounter : CounterObject
     protected virtual void OnCounterReceivesItem()
     {
         // Player Has Item And Counter Has No Item
-        Transform item = ItemManager.Instance.TransferKitchenObjectFromPlayerToCounter();
+        Transform item = ItemManager.Instance.GetItemFromPlayer();
 
         if (Ingredient != null)
         {
@@ -74,7 +74,7 @@ public class BaseCounter : CounterObject
     protected virtual void OnPlayerReceivesItem()
     {
         // Player receives Item from Counter
-        ItemManager.Instance.TransferItemFromCounterToPlayer(CounterItemHolder);
+        ItemManager.Instance.GetItemFromCounter(CounterItemHolder);
         Ingredient = null;
     }
 

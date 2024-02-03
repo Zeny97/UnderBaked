@@ -36,7 +36,8 @@ public class Plate : Item
 
     private void IconsLookAtCamera()
     {
-        iconHolder.transform.LookAt(Camera.main.transform.position, Camera.main.transform.forward);
+        //iconHolder.transform.LookAt(Camera.main.transform.position, Camera.main.transform.forward);
+        iconHolder.transform.forward = Camera.main.transform.forward;
     }
 
     public bool PutItemOnPlate(Item item)

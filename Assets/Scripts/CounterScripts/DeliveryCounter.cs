@@ -6,6 +6,7 @@ public class DeliveryCounter : CounterObject
 {
     public override void InteractWithCounter()
     {
- 
+        Transform item = ItemManager.Instance.GetItemFromPlayer();
+        Destroy(item.gameObject);
     }
 }
