@@ -7,9 +7,8 @@ using UnityEngine.UI;
 
 public class Plate : Item
 {
-    // private IDictionary<Item.E_ItemIdentifier, string> plateItems;
     [SerializeField] private int maxPlateItems;
-    [SerializeField] private Item[] itemsOnPlate;
+    public Item[] itemsOnPlate;
     [SerializeField] private int curPlateItemAmount;
     [SerializeField] private Transform itemHolder;
     [SerializeField] private Transform iconHolder;
@@ -20,13 +19,6 @@ public class Plate : Item
     {
         itemsOnPlate = new Item[maxPlateItems];
         curPlateItemAmount = 0;
-
-        // plateItems = new Dictionary<Item.E_ItemIdentifier, string>();
-        // plateItems.Add(Item.E_ItemIdentifier.Bread, "Bread");
-        // plateItems.Add(Item.E_ItemIdentifier.MeatPattyCooked, "Meat Patty Cooked");
-        // plateItems.Add(Item.E_ItemIdentifier.CabbageSliced, "Cabbage Sliced");
-        // plateItems.Add(Item.E_ItemIdentifier.CheeseSlices, "Cheese Slices");
-        // plateItems.Add(Item.E_ItemIdentifier.TomatoSlices, "Tomato Slices");
     }
 
     private void Update()

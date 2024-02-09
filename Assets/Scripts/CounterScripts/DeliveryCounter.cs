@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class DeliveryCounter : CounterObject
 {
+    [SerializeField] private Plate plate;
     public override void InteractWithCounter()
     {
-        Transform item = ItemManager.Instance.GetItemFromPlayer();
-        Destroy(item.gameObject);
+        if (ItemManager.Instance.PlayerHasKitchenObject())
+        {
+            if(ItemManager.Instance.GetKitchenObject().itemType == Item.E_ItemIdentifier.Plate)
+            {
+                plate = ItemManager.Instance.GetPlate();
+                RecipeManager.Instance.DeliverRecipe(plate);
+                Destroy(plate);
+            }
+        }
     }
 }

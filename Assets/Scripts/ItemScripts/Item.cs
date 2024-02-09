@@ -14,7 +14,7 @@ public class Item : MonoBehaviour
         MeatPattyCooked,
         MeatPattyBurned,
         Cabbage,
-        CabbageSliced,
+        CabbageSlices,
         CheeseBlock,
         CheeseSlices,
         Tomato,

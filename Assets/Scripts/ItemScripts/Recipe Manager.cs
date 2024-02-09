@@ -1,65 +1,86 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class RecipeManager : MonoBehaviour
 {
-    private static RecipeManager Instance;
-    public Dictionary<string, Recipe> Recipes;
+    public static RecipeManager Instance;
+    [SerializeField] private List<ScriptableRecipe> Recipes;
+
+    private List<ScriptableRecipe> waitingRecipeList;
+    private int waitingRecipeMax = 4;
+    private float recipeSpawnTimerMax = 4f;
+    private float recipeSpawnTimer;
 
     private void Awake()
     {
-        if (Instance == null)
+        waitingRecipeList = new List<ScriptableRecipe>();
+        if (Instance != null && Instance != this)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            InitializeRecipes();
+            Destroy(this);
         }
         else
         {
-            Destroy(gameObject);
+            Instance = this;
+        }
+        //DontDestroyOnLoad(gameObject);
+    }
+
+    private void Update()
+    {
+        recipeSpawnTimer -= Time.deltaTime;
+        if (recipeSpawnTimer <= 0)
+        {
+            recipeSpawnTimer = recipeSpawnTimerMax;
+            if (waitingRecipeList.Count < waitingRecipeMax)
+            {
+                ScriptableRecipe waitingRecipe = Recipes[Random.Range(0, Recipes.Count)];
+                Debug.Log(waitingRecipe.RecipeName);
+                waitingRecipeList.Add(waitingRecipe);
+            }
         }
     }
-    private void Start()
+
+    public void DeliverRecipe(Plate deliveredPlate)
     {
-        Recipe randomRecipe = RecipeManager.Instance.SelectRandomRecipe();
+        for (int i = 0; i < waitingRecipeList.Count; i++)
+        {
+            bool plateIngredientsMatchesRecipe = true;
+            ScriptableRecipe recipe = waitingRecipeList[i];
+            if (recipe.Ingredients.Count != deliveredPlate.itemsOnPlate.Length) continue;
+
+            bool ingredientFound = false;
+            foreach (Item.E_ItemIdentifier recipeIngredient in recipe.Ingredients)
+            {
+                foreach (Item plateIngredient in deliveredPlate.itemsOnPlate)
+                {
+                    if (plateIngredient.itemType == recipeIngredient)
+                    {
+                        ingredientFound = true;
+                        break;
+                    }
+                }
+
+                if (!ingredientFound)
+                {
+                    Debug.Log("Ingredient has not been found");
+                    plateIngredientsMatchesRecipe = false;
+                }
+            }
+
+            if (plateIngredientsMatchesRecipe)
+            {
+                Debug.Log("Player delivered a correct recipe");
+                waitingRecipeList.RemoveAt(i);
+                return;
+            }
+
+
+        }
+
+        Debug.Log("Player did not deliver a correct recipe");
     }
-
-    private void InitializeRecipes()
-    {
-        Recipes = new Dictionary<string, Recipe>();
-
-        AddRecipe("Burger", new List<string> {"Bread", "Tomato Slices", "Cabbage Slices", "Cheese Slices", "Cooked Meat"});
-        AddRecipe("Salad", new List<string> { "Cabbage Slices", "Cabbage Slices", "Tomato Slices" });
-    }
-
-    private void AddRecipe(string name, List<string> ingredients)
-    {
-        Recipe recipe = new Recipe(name, ingredients);
-        Recipes.Add(name, recipe);
-    }
-
-    public Recipe SelectRandomRecipe()
-    {
-        List<string> keys = new List<string>(Recipe.Keys);
-        string randomRecipe = keys[Random.Range(0, keys.Count)];
-        return Recipes[randomRecipe];
-    }
-
-}
-
-public class Recipe
-{
-    public string Name;
-    public List<string> Ingrediens;
-
-    public Recipe( string name, List<string> ingrediens)
-    {
-        Name = name;
-        Ingrediens = ingrediens;
-    }
-
-    public static IEnumerable<string> Keys { get; internal set; }
 }
