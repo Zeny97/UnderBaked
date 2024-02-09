@@ -31,10 +31,16 @@ public class ItemManager : MonoBehaviour
         return false;
     }
 
-    //public Item.E_ItemIdentifier GetKitchenObject()
-    //{
-    //    return playerItemHolder.GetComponentInChildren<Item.E_ItemIdentifier>();
-    //}
+    public Item GetKitchenObject()
+    {
+        return playerItemHolder.GetComponentInChildren<Item>();
+    }
+
+    public Plate GetPlate()
+    {
+        Plate plate = playerItemHolder.GetComponentInChildren<Plate>();
+        return plate;
+    }
 
     public Transform GetItemFromPlayer()
     {
