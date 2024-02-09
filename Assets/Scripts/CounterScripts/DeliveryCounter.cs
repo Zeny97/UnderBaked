@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DeliveryCounter : CounterObject
@@ -9,12 +10,18 @@ public class DeliveryCounter : CounterObject
     {
         if (ItemManager.Instance.PlayerHasKitchenObject())
         {
-            if(ItemManager.Instance.GetKitchenObject().itemType == Item.E_ItemIdentifier.Plate)
+            if (ItemManager.Instance.GetKitchenObject().itemType == Item.E_ItemIdentifier.Plate)
             {
                 plate = ItemManager.Instance.GetPlate();
-                RecipeManager.Instance.DeliverRecipe(plate);
-                Destroy(plate);
+                if (plate.itemsOnPlate.Length > 0)
+                {
+                    RecipeManager.Instance.DeliverRecipe(plate);
+                    Destroy(plate.gameObject);
+                    return;
+                }
             }
+            Debug.Log("There are no Items on the Plate");
+
         }
     }
 }

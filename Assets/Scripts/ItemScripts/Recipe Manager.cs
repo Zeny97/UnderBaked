@@ -46,17 +46,29 @@ public class RecipeManager : MonoBehaviour
 
     public void DeliverRecipe(Plate deliveredPlate)
     {
+        // Go through every waiting recipe
         for (int i = 0; i < waitingRecipeList.Count; i++)
         {
+            // bool isn't changed if all ingredients on Plate match the order
             bool plateIngredientsMatchesRecipe = true;
             ScriptableRecipe recipe = waitingRecipeList[i];
-            if (recipe.Ingredients.Count != deliveredPlate.itemsOnPlate.Length) continue;
+
+            // Check if number of Items Match with number of items on waitingrecipe
+            // if (recipe.Ingredients.Count != deliveredPlate.itemsOnPlate.Length) continue;
 
             bool ingredientFound = false;
+
+            // Check each ingredient on the current waiting recipe
             foreach (Item.E_ItemIdentifier recipeIngredient in recipe.Ingredients)
             {
+                // Check each ingredient on the delivered Plate
+                int counter = 0;
+
                 foreach (Item plateIngredient in deliveredPlate.itemsOnPlate)
                 {
+                    if (deliveredPlate.itemsOnPlate[counter] == null) break; 
+                    counter++;
+                    // Is the item on the plate somewhere in the recipe
                     if (plateIngredient.itemType == recipeIngredient)
                     {
                         ingredientFound = true;
@@ -64,13 +76,16 @@ public class RecipeManager : MonoBehaviour
                     }
                 }
 
+                // ingredient couldn't be found
                 if (!ingredientFound)
                 {
                     Debug.Log("Ingredient has not been found");
                     plateIngredientsMatchesRecipe = false;
+                    break;
                 }
             }
 
+            // Plate content and recipe content match
             if (plateIngredientsMatchesRecipe)
             {
                 Debug.Log("Player delivered a correct recipe");
@@ -81,6 +96,7 @@ public class RecipeManager : MonoBehaviour
 
         }
 
+        // Plate content didn't match with any waiting recipe
         Debug.Log("Player did not deliver a correct recipe");
     }
 }
