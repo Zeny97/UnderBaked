@@ -7,7 +7,9 @@ using Random = UnityEngine.Random;
 
 public class RecipeManager : MonoBehaviour
 {
-    public static RecipeManager Instance;
+    public static RecipeManager instance;
+    [SerializeField] private ScriptableEvent OnRecipeSpawned;
+    [SerializeField] private ScriptableEvent OnRecipeCompleted;
     [SerializeField] private List<ScriptableRecipe> Recipes;
 
     private List<ScriptableRecipe> waitingRecipeList;
@@ -18,13 +20,13 @@ public class RecipeManager : MonoBehaviour
     private void Awake()
     {
         waitingRecipeList = new List<ScriptableRecipe>();
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(this);
         }
         else
         {
-            Instance = this;
+            instance = this;
         }
         //DontDestroyOnLoad(gameObject);
     }
@@ -40,6 +42,7 @@ public class RecipeManager : MonoBehaviour
                 ScriptableRecipe waitingRecipe = Recipes[Random.Range(0, Recipes.Count)];
                 Debug.Log(waitingRecipe.RecipeName);
                 waitingRecipeList.Add(waitingRecipe);
+                OnRecipeSpawned.RaiseEvent(waitingRecipe);
             }
         }
     }
@@ -88,7 +91,8 @@ public class RecipeManager : MonoBehaviour
             // Plate content and recipe content match
             if (plateIngredientsMatchesRecipe)
             {
-                Debug.Log("Player delivered a correct recipe");
+
+                OnRecipeCompleted.RaiseEvent(waitingRecipeList[i].RecipeScoreValue);
                 waitingRecipeList.RemoveAt(i);
                 return;
             }
@@ -98,5 +102,10 @@ public class RecipeManager : MonoBehaviour
 
         // Plate content didn't match with any waiting recipe
         Debug.Log("Player did not deliver a correct recipe");
+    }
+
+    public List<ScriptableRecipe> GetWaitingRecipeList()
+    {
+        return waitingRecipeList;
     }
 }

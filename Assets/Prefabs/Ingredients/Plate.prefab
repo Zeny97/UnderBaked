@@ -84,7 +84,7 @@ MonoBehaviour:
   itemsOnPlate: []
   curPlateItemAmount: 0
   itemHolder: {fileID: 4326929410525782950}
-  iconHolder: {fileID: 9027713034495228752}
+  container: {fileID: 9027713034495228752}
   singleIcon: {fileID: 4150152370622917777, guid: 1a9a9a1667c403146b6f3461162d67e8,
     type: 3}
 --- !u!1001 &205988982472514541

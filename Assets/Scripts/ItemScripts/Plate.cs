@@ -11,7 +11,7 @@ public class Plate : Item
     public Item[] itemsOnPlate;
     [SerializeField] private int curPlateItemAmount;
     [SerializeField] private Transform itemHolder;
-    [SerializeField] private Transform iconHolder;
+    [SerializeField] private Transform container;
     [SerializeField] GameObject singleIcon;
     private GameObject newIcon;
 
@@ -28,19 +28,18 @@ public class Plate : Item
 
     private void IconsLookAtCamera()
     {
-        //iconHolder.transform.LookAt(Camera.main.transform.position, Camera.main.transform.forward);
-        iconHolder.transform.forward = Camera.main.transform.forward;
+        container.transform.forward = Camera.main.transform.forward;
     }
 
     public bool PutItemOnPlate(Item item)
     {
-        // Wenn Teller voll
+        // When plate full
         if(curPlateItemAmount >= maxPlateItems)
         {
             return false;
         }
 
-        // Füge Item dem Teller hinzu
+        // Add item to plate
         itemsOnPlate[curPlateItemAmount] = item;
         curPlateItemAmount++;
 
@@ -55,15 +54,15 @@ public class Plate : Item
 
     public void UpdateVisual()
     {
-        for (int i = 0; i < iconHolder.childCount; i++)
+        for (int i = 0; i < container.childCount; i++)
         {
-            Destroy(iconHolder.GetChild(i).gameObject);
+            Destroy(container.GetChild(i).gameObject);
         }
 
 
         for(int i = 0;  i < curPlateItemAmount; i++)
         {
-            newIcon = Instantiate(singleIcon, iconHolder.transform);
+            newIcon = Instantiate(singleIcon, container.transform);
             newIcon.GetComponent<Image>().sprite = itemsOnPlate[i].itemSprite;
         }
     }
