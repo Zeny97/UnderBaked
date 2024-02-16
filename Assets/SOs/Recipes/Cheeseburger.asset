@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b621e7042335942bf123fcbe6718bd, type: 3}
   m_Name: Cheeseburger
   m_EditorClassIdentifier: 
-  Ingredients: 010000000300000008000000
+  Ingredients:
+  - {fileID: -3448987266927678640, guid: bd7e09c8844f3c848a65f70041aa7358, type: 3}
+  - {fileID: 6060257562792122302, guid: b15e389ed43e71f409c125d57e08e468, type: 3}
+  - {fileID: 4491627419655536313, guid: 08a5c5622154fe845bf8e0c3842aee66, type: 3}
   RecipeName: Cheese Burger
   RecipeScoreValue: 50
+  timeIncrement: 2

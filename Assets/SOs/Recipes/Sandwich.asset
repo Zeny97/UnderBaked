@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b621e7042335942bf123fcbe6718bd, type: 3}
   m_Name: Sandwich
   m_EditorClassIdentifier: 
-  Ingredients: 0100000006000000080000000a000000
+  Ingredients:
+  - {fileID: -3448987266927678640, guid: bd7e09c8844f3c848a65f70041aa7358, type: 3}
+  - {fileID: 7776611081695010524, guid: 25b6c7f1d380f604f868154d4da12cd2, type: 3}
+  - {fileID: 6060257562792122302, guid: b15e389ed43e71f409c125d57e08e468, type: 3}
+  - {fileID: -5060322275796120509, guid: c484a1326863b7a419b78ef6febc5203, type: 3}
   RecipeName: Sandwich
   RecipeScoreValue: 80
+  timeIncrement: 3

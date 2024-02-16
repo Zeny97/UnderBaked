@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b621e7042335942bf123fcbe6718bd, type: 3}
   m_Name: Hamburger
   m_EditorClassIdentifier: 
-  Ingredients: 0100000003000000
+  Ingredients:
+  - {fileID: -3448987266927678640, guid: bd7e09c8844f3c848a65f70041aa7358, type: 3}
+  - {fileID: 4491627419655536313, guid: 08a5c5622154fe845bf8e0c3842aee66, type: 3}
   RecipeName: Hamburger
   RecipeScoreValue: 40
+  timeIncrement: 1

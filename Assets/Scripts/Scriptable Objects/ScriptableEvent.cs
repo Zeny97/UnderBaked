@@ -21,15 +21,7 @@ public class ScriptableEvent : ScriptableObject
         listenerList.Remove(_listener);
     }
 
-    public void RaiseEvent(float recipeScoreValue)
-    {
-        // tell listeners that event was raised
-        for (int i = 0; i < listenerList.Count; i++)
-        {
-            listenerList[i].OnEventRaised();
-        }
-    }
-    public void RaiseEvent(ScriptableRecipe waitingRecipe)
+    public void RaiseEvent()
     {
         // tell listeners that event was raised
         for (int i = 0; i < listenerList.Count; i++)
