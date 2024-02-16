@@ -20,7 +20,7 @@ public class RecipeTemplateUI : MonoBehaviour
     {
         recipeNameText.text = scriptableRecipe.RecipeName;
 
-        foreach (Transform child in  iconContainer)
+        foreach (Transform child in iconContainer)
         {
             if (child == iconTemplate) continue;
             Destroy(child.gameObject);

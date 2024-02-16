@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Plate : Item
 {
     [SerializeField] private int maxPlateItems;
-    public Item[] itemsOnPlate;
+    public List<Item> Ingredients;
     [SerializeField] private int curPlateItemAmount;
     [SerializeField] private Transform itemHolder;
     [SerializeField] private Transform container;
@@ -17,7 +17,7 @@ public class Plate : Item
 
     private void Awake()
     {
-        itemsOnPlate = new Item[maxPlateItems];
+        Ingredients = new List<Item>();
         curPlateItemAmount = 0;
     }
 
@@ -40,7 +40,7 @@ public class Plate : Item
         }
 
         // Add item to plate
-        itemsOnPlate[curPlateItemAmount] = item;
+        Ingredients.Add(item);
         curPlateItemAmount++;
 
         item.transform.SetParent(itemHolder);
@@ -63,7 +63,7 @@ public class Plate : Item
         for(int i = 0;  i < curPlateItemAmount; i++)
         {
             newIcon = Instantiate(singleIcon, container.transform);
-            newIcon.GetComponent<Image>().sprite = itemsOnPlate[i].itemSprite;
+            newIcon.GetComponent<Image>().sprite = Ingredients[i].itemSprite;
         }
     }
 

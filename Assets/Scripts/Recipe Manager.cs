@@ -49,46 +49,47 @@ public class RecipeManager : MonoBehaviour
         // Cycle through every waiting recipe
         for (int i = 0; i < waitingRecipeList.Count; i++)
         {
-            // doesn't change unless ingredient is missing
-            bool isPlateMatchingRecipe = true;
-            bool isIngredientFound = false;
             ScriptableRecipe recipe = waitingRecipeList[i];
-            // Check each ingredient on the current waiting recipe
-            foreach (Item recipeIngredient in recipe.Ingredients)
+            // Has the same number of ingredients
+            if (deliveredPlate.Ingredients.Count == waitingRecipeList.Count)
             {
-                // Check each ingredient on the delivered Plate
-                int counter = 0;
-                foreach (Item plateIngredient in deliveredPlate.itemsOnPlate)
+                bool isPlateMatchingRecipe = CompareItemContents(deliveredPlate, recipe);
+                
+                if (isPlateMatchingRecipe)
                 {
-                    if (deliveredPlate.itemsOnPlate[counter] == null) break; 
-                    counter++;
-                    // Is the item on the plate somewhere in the recipe
-                    if (plateIngredient == recipeIngredient)
-                    {
-                        isIngredientFound = true;
-                        break;
-                    }
+                    waitingRecipeList.RemoveAt(i);
+                    OnRecipeCompleted.RaiseEvent();
                 }
-                // ingredient couldn't be found
-                if (!isIngredientFound)
-                {
-                    Debug.Log("Ingredient has not been found");
-                    isPlateMatchingRecipe = false;
-                    break;
-                }
-            }
-            // Player delivered correct recipe
-            if (isPlateMatchingRecipe)
-            {
-                waitingRecipeList.RemoveAt(i);
-                OnRecipeCompleted.RaiseEvent();
-                return;
             }
         }
-        // Player didn't deliver correct recipe
+        // Player delivered wrong recipe
         Debug.Log("Player did not deliver a correct recipe");
     }
 
+    private bool CompareItemContents(Plate deliveredPlate, ScriptableRecipe recipe)
+    {
+        // Cycle through each ingredient in the recipe
+        foreach (Item recipeIngredient in recipe.Ingredients)
+        {
+            bool isIngredientFound = false;
+            // Cycle through each ingredient in the Plate
+            foreach (Item plateIngredient in deliveredPlate.Ingredients)
+            {
+                // ingredient matches
+                if (plateIngredient == recipeIngredient)
+                {
+                    isIngredientFound = true;
+                    break;
+                }
+            }
+
+            if (!isIngredientFound)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
     public List<ScriptableRecipe> GetWaitingRecipeList()
     {
         return waitingRecipeList;

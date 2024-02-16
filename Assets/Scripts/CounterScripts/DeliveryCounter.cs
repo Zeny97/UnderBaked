@@ -13,7 +13,7 @@ public class DeliveryCounter : CounterObject
             if (ItemManager.Instance.GetKitchenObject().itemType == Item.E_ItemIdentifier.Plate)
             {
                 plate = ItemManager.Instance.GetPlate();
-                if (plate.itemsOnPlate.Length > 0)
+                if (plate.Ingredients.Count > 0)
                 {
                     RecipeManager.instance.DeliverRecipe(plate);
                     Destroy(plate.gameObject);

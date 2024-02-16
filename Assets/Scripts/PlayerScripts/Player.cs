@@ -56,7 +56,6 @@ public class Player : MonoBehaviour
     {
         if (context.started && canDash)
         {
-            Debug.Log(context.phase);
             rb.AddForce(moveDirection * moveDistance * dashMultiplier, ForceMode.Impulse);
             isDashing = true;
             canDash = false;
