@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ProgressBar : MonoBehaviour
+public class ProgressbarTemplateUI : MonoBehaviour
 {
     [SerializeField] private Image progressBarSprite;
 

@@ -33,21 +33,25 @@ public class Plate : Item
 
     public bool PutItemOnPlate(Item item)
     {
-        // When plate full
-        if(curPlateItemAmount >= maxPlateItems)
+        if (item is CombinableItem || item.itemType == E_ItemIdentifier.MeatPattyCooked)
         {
-            return false;
+            // When plate full
+            if(curPlateItemAmount >= maxPlateItems)
+            {
+                return false;
+            }
+
+            // Add item to plate
+            Ingredients.Add(item);
+            curPlateItemAmount++;
+
+            item.transform.SetParent(itemHolder);
+            item.transform.position = itemHolder.transform.position;
+            item.transform.rotation = itemHolder.transform.rotation;
+            UpdateVisual();
+            return true;
         }
-
-        // Add item to plate
-        Ingredients.Add(item);
-        curPlateItemAmount++;
-
-        item.transform.SetParent(itemHolder);
-        item.transform.position = itemHolder.transform.position;
-        item.transform.rotation = itemHolder.transform.rotation;
-        UpdateVisual();
-        return true;
+        return false;
     }
 
 

@@ -103,7 +103,7 @@ MonoBehaviour:
   Ingredient: {fileID: 0}
   ItemToSpawn: {fileID: -3448987266927678640, guid: bd7e09c8844f3c848a65f70041aa7358,
     type: 3}
-  TimeBetweenSpawns: 0
+  TimeBetweenSpawns: 2
 --- !u!1001 &1640140336680829711
 PrefabInstance:
   m_ObjectHideFlags: 0

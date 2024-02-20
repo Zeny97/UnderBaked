@@ -8,10 +8,12 @@ public class RecipeManager : MonoBehaviour
     [SerializeField] private ScriptableEvent OnRecipeSpawned;
     [SerializeField] private ScriptableEvent OnRecipeCompleted;
     [SerializeField] private List<ScriptableRecipe> Recipes;
+    private float deliveredRecipeScoreValue;
     private List<ScriptableRecipe> waitingRecipeList;
     private int waitingRecipeMax = 4;
     private float recipeSpawnTimerMax = 4f;
     private float recipeSpawnTimer;
+    private float deliveredRecipeTimeValue;
 
     private void Awake()
     {
@@ -44,54 +46,78 @@ public class RecipeManager : MonoBehaviour
         }
     }
 
-    public void DeliverRecipe(Plate deliveredPlate)
+    public void DeliverRecipe(Plate _deliveredPlate)
     {
         // Cycle through every waiting recipe
+        Debug.Log("Ich bin in der DeliverRecipe Methode");
         for (int i = 0; i < waitingRecipeList.Count; i++)
         {
+            Debug.Log("Ich gehe gerade durch jedes Rezept");
             ScriptableRecipe recipe = waitingRecipeList[i];
             // Has the same number of ingredients
-            if (deliveredPlate.Ingredients.Count == waitingRecipeList.Count)
+            if (_deliveredPlate.Ingredients.Count == recipe.Ingredients.Count)
             {
-                bool isPlateMatchingRecipe = CompareItemContents(deliveredPlate, recipe);
+                Debug.Log("Der Teller und das Rezept haben die Selbe Menge an Zutaten");
+                bool isPlateMatchingRecipe = CompareItemContents(_deliveredPlate, recipe);
                 
                 if (isPlateMatchingRecipe)
                 {
+                    deliveredRecipeScoreValue = recipe.RecipeScoreValue;
+                    deliveredRecipeTimeValue = recipe.TimeIncrement;
                     waitingRecipeList.RemoveAt(i);
                     OnRecipeCompleted.RaiseEvent();
+                    Debug.Log("Recipe succesfully delivered");
+                    break;
+                }
+                else
+                {
+                    // Player delivered wrong recipe
+                    Debug.Log("Player did not deliver a correct recipe");
                 }
             }
-        }
-        // Player delivered wrong recipe
-        Debug.Log("Player did not deliver a correct recipe");
+        } 
     }
 
-    private bool CompareItemContents(Plate deliveredPlate, ScriptableRecipe recipe)
+    private bool CompareItemContents(Plate _deliveredPlate, ScriptableRecipe _recipe)
     {
         // Cycle through each ingredient in the recipe
-        foreach (Item recipeIngredient in recipe.Ingredients)
+        foreach (Item recipeIngredient in _recipe.Ingredients)
         {
             bool isIngredientFound = false;
             // Cycle through each ingredient in the Plate
-            foreach (Item plateIngredient in deliveredPlate.Ingredients)
+            foreach (Item plateIngredient in _deliveredPlate.Ingredients)
             {
                 // ingredient matches
-                if (plateIngredient == recipeIngredient)
+                Debug.Log(recipeIngredient);
+                if (plateIngredient.itemType == recipeIngredient.itemType)
                 {
                     isIngredientFound = true;
                     break;
                 }
             }
 
+            // ingredient doesn't match
             if (!isIngredientFound)
             {
                 return false;
             }
         }
+
+        // every ingredient matched
         return true;
     }
     public List<ScriptableRecipe> GetWaitingRecipeList()
     {
         return waitingRecipeList;
+    }
+
+    public float GetRecipeScore()
+    {
+        return deliveredRecipeScoreValue;
+    }
+
+    public float GetRecipeTimeIncrease()
+    {
+        return deliveredRecipeTimeValue;
     }
 }

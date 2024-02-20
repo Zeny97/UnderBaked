@@ -17,4 +17,4 @@ MonoBehaviour:
   - {fileID: -5060322275796120509, guid: c484a1326863b7a419b78ef6febc5203, type: 3}
   RecipeName: Small Salad
   RecipeScoreValue: 40
-  timeIncrement: 1
+  TimeIncrement: 5

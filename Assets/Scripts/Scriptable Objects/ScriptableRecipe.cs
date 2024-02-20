@@ -8,7 +8,7 @@ public class ScriptableRecipe : ScriptableObject
     public List<Item> Ingredients;
     public string RecipeName;
     public float RecipeScoreValue;
-    public float timeIncrement;
+    public float TimeIncrement;
 }
 
 

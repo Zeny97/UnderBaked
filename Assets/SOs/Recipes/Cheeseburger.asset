@@ -18,4 +18,4 @@ MonoBehaviour:
   - {fileID: 4491627419655536313, guid: 08a5c5622154fe845bf8e0c3842aee66, type: 3}
   RecipeName: Cheese Burger
   RecipeScoreValue: 50
-  timeIncrement: 2
+  TimeIncrement: 7

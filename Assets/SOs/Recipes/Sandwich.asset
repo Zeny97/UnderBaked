@@ -19,4 +19,4 @@ MonoBehaviour:
   - {fileID: -5060322275796120509, guid: c484a1326863b7a419b78ef6febc5203, type: 3}
   RecipeName: Sandwich
   RecipeScoreValue: 80
-  timeIncrement: 3
+  TimeIncrement: 8

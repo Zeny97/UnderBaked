@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ProcessingCounter : BaseCounter
 {
-    [SerializeField] protected ProgressBar ProgressBar;
+    [SerializeField] protected ProgressbarTemplateUI ProgressBar;
     [SerializeField] protected ProcessableItem ItemToProcess;
     [SerializeField] protected Item ResultingItem;
     [SerializeField] protected float CurrentProcessingTime;
