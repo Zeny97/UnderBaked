@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,12 +9,8 @@ public class BurnWarningTemplateUI : MonoBehaviour
         warningSprite.transform.gameObject.SetActive(false);
     }
 
-    public void UpdateWarningStatus(Item _item)
+    public void UpdateWarningStatus(bool state)
     {
-        if (_item.itemType == Item.E_ItemIdentifier.MeatPattyCooked)
-        {
-        warningSprite.gameObject.SetActive(true);
-        }
-        else warningSprite.gameObject.SetActive(false);
+        warningSprite.gameObject.SetActive(state);
     }
 }

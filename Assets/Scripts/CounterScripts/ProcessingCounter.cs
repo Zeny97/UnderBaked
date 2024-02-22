@@ -68,7 +68,7 @@ public class ProcessingCounter : BaseCounter
 
     protected virtual bool IsProcessing()
     {
-        if (CurrentProcessingTime> 0 && CurrentProcessingTime < ItemToProcess.processingTime)
+        if (CurrentProcessingTime > 0 && CurrentProcessingTime < ItemToProcess.processingTime)
         {
             return true;
         }

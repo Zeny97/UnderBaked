@@ -15,12 +15,18 @@ public class StoveCounter : ProcessingCounter
     protected override void ProcessItem()
     {
         // Check Item type
-        if (ItemToProcess is CookableItem)
-        { 
-            ItemToProcess = Ingredient.GetComponent<ProcessableItem>();
-            BurnWarning.UpdateWarningStatus(ItemToProcess);
-            base.ProcessItem();
+        if (ItemToProcess is not CookableItem)
+        {
+            BurnWarning.UpdateWarningStatus(false);
+            return;
         }
+
+        ItemToProcess = Ingredient.GetComponent<CookableItem>();
+        if (Ingredient.itemType == Item.E_ItemIdentifier.MeatPattyCooked)
+        {
+            BurnWarning.UpdateWarningStatus(true);
+        }
+        base.ProcessItem();
     }
 
     protected override void OnFinishedProcessingItem()
@@ -35,8 +41,8 @@ public class StoveCounter : ProcessingCounter
 
     protected override void OnPlayerReceivesItem()
     {
-        BurnWarning.UpdateWarningStatus(ItemToProcess);
         base.OnPlayerReceivesItem();
+        BurnWarning.UpdateWarningStatus(false);
     }
 
     protected override bool IsProcessing()
