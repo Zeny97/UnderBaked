@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class StoveCounter : ProcessingCounter
 {
+    [SerializeField] private BurnWarningTemplateUI BurnWarning;
     private void Update()
     {
         ProcessItem();
@@ -15,8 +16,9 @@ public class StoveCounter : ProcessingCounter
     {
         // Check Item type
         if (ItemToProcess is CookableItem)
-        {
+        { 
             ItemToProcess = Ingredient.GetComponent<ProcessableItem>();
+            BurnWarning.UpdateWarningStatus(ItemToProcess);
             base.ProcessItem();
         }
     }
@@ -29,6 +31,12 @@ public class StoveCounter : ProcessingCounter
     protected override void OnCounterReceivesItem()
     {
         base.OnCounterReceivesItem();
+    }
+
+    protected override void OnPlayerReceivesItem()
+    {
+        BurnWarning.UpdateWarningStatus(ItemToProcess);
+        base.OnPlayerReceivesItem();
     }
 
     protected override bool IsProcessing()
