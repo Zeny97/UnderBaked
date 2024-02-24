@@ -9,7 +9,7 @@ public class TimerTemplateUI : MonoBehaviour
     [SerializeField] private ScriptableEvent OnTimerRunsOut;
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private Transform timerTransform;
-    private float timer;
+    public float timer { get; private set; }
     private void Awake()
     {
         timer = 300;
@@ -18,6 +18,10 @@ public class TimerTemplateUI : MonoBehaviour
 
     private void Update()
     {
+        if(timer <= 0)
+        {
+            OnTimerRunsOut.RaiseEvent();
+        }
         timer -= Time.deltaTime;
         TimeSpan time = TimeSpan.FromSeconds(timer);
         timerText.text = time.ToString(@"mm\:ss");

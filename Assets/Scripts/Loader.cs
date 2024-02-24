@@ -3,19 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public static class Loader
+public class Loader : MonoBehaviour
 {
+    [SerializeField] private GameObject m_OptionsMenu;
+    [SerializeField] private GameObject m_GameOver;
+
+
     public enum Scene
     {
         GameScene,
-        MainMenu,
-        Options,
-        GameOver,
+        MainMenu
     }
 
-    public static void Load(Scene scene)
+    public static void SwitchScene(int sceneBuildIndex)
     {
-        SceneManager.LoadScene(scene.ToString());
+        SceneManager.LoadScene(sceneBuildIndex);
     }
 
+    public static void LoadOptionsMenu()
+    {
+
+    }
+
+    public static void LoadGameOverMenu()
+    {
+
+    }
 }

@@ -63,6 +63,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            
+        }
+    }
+
     private IEnumerator C_DashReset()
     {
         yield return new WaitForSeconds(dashTime);

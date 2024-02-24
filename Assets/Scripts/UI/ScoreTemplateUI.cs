@@ -8,7 +8,7 @@ public class ScoreTemplateUI : MonoBehaviour
 
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private Transform scoreTransform;
-    private float score;
+    public float score { get; private set; }
     private void Awake()
     {
         score = 0;
