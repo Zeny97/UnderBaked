@@ -7,12 +7,14 @@ public class RecipeManager : MonoBehaviour
     public static RecipeManager instance;
     [SerializeField] private ScriptableEvent OnRecipeSpawned;
     [SerializeField] private ScriptableEvent OnRecipeCompleted;
+    [SerializeField] private ScriptableEvent OnRecipeSuccess;
+    [SerializeField] private ScriptableEvent OnRecipeFailed;
     [SerializeField] private List<ScriptableRecipe> Recipes;
-    private float deliveredRecipeScoreValue;
     private List<ScriptableRecipe> waitingRecipeList;
     private int waitingRecipeMax = 4;
     private float recipeSpawnTimerMax = 4f;
     private float recipeSpawnTimer;
+    private float deliveredRecipeScoreValue;
     private float deliveredRecipeTimeValue;
 
     private void Awake()
@@ -49,33 +51,27 @@ public class RecipeManager : MonoBehaviour
     public void DeliverRecipe(Plate _deliveredPlate)
     {
         // Cycle through every waiting recipe
-        Debug.Log("Ich bin in der DeliverRecipe Methode");
         for (int i = 0; i < waitingRecipeList.Count; i++)
         {
-            Debug.Log("Ich gehe gerade durch jedes Rezept");
+            // current recipe
             ScriptableRecipe recipe = waitingRecipeList[i];
-            // Has the same number of ingredients
+            // Cancels early if ingredient amount doesnt match
             if (_deliveredPlate.Ingredients.Count == recipe.Ingredients.Count)
             {
-                Debug.Log("Der Teller und das Rezept haben die Selbe Menge an Zutaten");
                 bool isPlateMatchingRecipe = CompareItemContents(_deliveredPlate, recipe);
                 
                 if (isPlateMatchingRecipe)
                 {
                     deliveredRecipeScoreValue = recipe.RecipeScoreValue;
                     deliveredRecipeTimeValue = recipe.TimeIncrement;
+                    OnRecipeSuccess.RaiseEvent();
                     waitingRecipeList.RemoveAt(i);
                     OnRecipeCompleted.RaiseEvent();
-                    Debug.Log("Recipe succesfully delivered");
-                    break;
-                }
-                else
-                {
-                    // Player delivered wrong recipe
-                    Debug.Log("Player did not deliver a correct recipe");
+                    return;
                 }
             }
-        } 
+        }
+        OnRecipeFailed.RaiseEvent();
     }
 
     private bool CompareItemContents(Plate _deliveredPlate, ScriptableRecipe _recipe)
@@ -87,8 +83,7 @@ public class RecipeManager : MonoBehaviour
             // Cycle through each ingredient in the Plate
             foreach (Item plateIngredient in _deliveredPlate.Ingredients)
             {
-                // ingredient matches
-                Debug.Log(recipeIngredient);
+                // ingredient matches 
                 if (plateIngredient.itemType == recipeIngredient.itemType)
                 {
                     isIngredientFound = true;

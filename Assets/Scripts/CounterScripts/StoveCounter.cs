@@ -6,6 +6,13 @@ using UnityEngine;
 public class StoveCounter : ProcessingCounter
 {
     [SerializeField] private BurnWarningTemplateUI BurnWarning;
+    [SerializeField] private AudioSource audioSource;
+    private bool isAudioPlaying;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void Update()
     {
         ProcessItem();
@@ -21,6 +28,11 @@ public class StoveCounter : ProcessingCounter
             return;
         }
 
+        if (!isAudioPlaying)
+        {
+            audioSource.Play();
+            isAudioPlaying = true;
+        }
         ItemToProcess = Ingredient.GetComponent<CookableItem>();
         if (Ingredient.itemType == Item.E_ItemIdentifier.MeatPattyCooked)
         {
@@ -41,6 +53,8 @@ public class StoveCounter : ProcessingCounter
 
     protected override void OnPlayerReceivesItem()
     {
+        audioSource.Stop();
+        isAudioPlaying = false;
         base.OnPlayerReceivesItem();
         BurnWarning.UpdateWarningStatus(false);
     }

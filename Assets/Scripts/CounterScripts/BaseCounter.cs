@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BaseCounter : CounterObject
 {
+    [SerializeField] private ScriptableEvent OnPickedSomething;
+    [SerializeField] private ScriptableEvent OnDroppedSomething;
     [SerializeField] protected Transform CounterItemHolder;
     [SerializeField] protected Item Ingredient = null;
 
@@ -18,7 +20,7 @@ public class BaseCounter : CounterObject
             }
             else
             {
-
+                OnDroppedSomething.RaiseEvent();
                 OnCounterReceivesItem();
             }
         }
@@ -31,7 +33,7 @@ public class BaseCounter : CounterObject
             else 
             {
                 OnPlayerReceivesItem();
-
+                OnPickedSomething.RaiseEvent();
             }
 
         }
@@ -40,6 +42,7 @@ public class BaseCounter : CounterObject
 
     protected virtual void OnBothHaveItems()
     {
+
         Debug.Log("Player and Counter have an Item.");
     }
 

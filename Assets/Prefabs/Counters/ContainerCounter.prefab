@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d1386ff1d67974e82ae9c3f0164df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnPickedSomething: {fileID: 11400000, guid: 7c9ff9f716c062d46a963e0cb4f2bb66, type: 2}
+  OnDroppedSomething: {fileID: 11400000, guid: f608368af1f9fb24789c5f365ae0b921, type: 2}
   CounterItemHolder: {fileID: 2922229650614952176}
   Ingredient: {fileID: 0}
   ItemToSpawn: {fileID: 0}

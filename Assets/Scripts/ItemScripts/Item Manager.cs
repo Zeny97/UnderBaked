@@ -14,13 +14,12 @@ public class ItemManager : MonoBehaviour
     {
         if( Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         else
         {
             Instance = this;
         }
-        DontDestroyOnLoad(this);
     }
 
     public bool PlayerHasKitchenObject() 

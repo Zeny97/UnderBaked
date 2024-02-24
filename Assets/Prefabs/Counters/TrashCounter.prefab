@@ -67,8 +67,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d16439878433f43961540d5e4dc943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counterItemHolder: {fileID: 0}
-  ingredient: {fileID: 0}
+  OnPickedSomething: {fileID: 11400000, guid: 7c9ff9f716c062d46a963e0cb4f2bb66, type: 2}
+  OnDroppedSomething: {fileID: 11400000, guid: f608368af1f9fb24789c5f365ae0b921, type: 2}
+  CounterItemHolder: {fileID: 0}
+  Ingredient: {fileID: 0}
+  OnDroppedIntoTrash: {fileID: 11400000, guid: b497007bf6e1a3e439b23c11addbf9f4, type: 2}
 --- !u!1001 &8485569376398153228
 PrefabInstance:
   m_ObjectHideFlags: 0

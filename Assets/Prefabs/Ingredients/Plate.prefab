@@ -81,7 +81,7 @@ MonoBehaviour:
   itemType: 11
   itemSprite: {fileID: 21300000, guid: 3928afb5321bb3d489bbd4ac581b29a2, type: 3}
   maxPlateItems: 6
-  itemsOnPlate: []
+  Ingredients: []
   curPlateItemAmount: 0
   itemHolder: {fileID: 4326929410525782950}
   container: {fileID: 9027713034495228752}
@@ -276,8 +276,8 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 0.6, y: 0.6}
-  m_Spacing: {x: 0.1, y: 0.1}
+  m_CellSize: {x: 0.35, y: 0.3}
+  m_Spacing: {x: 0.05, y: 0.05}
   m_Constraint: 1
   m_ConstraintCount: 3
 --- !u!224 &9027713034495228752 stripped
