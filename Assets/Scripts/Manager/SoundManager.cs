@@ -41,7 +41,7 @@ public class SoundManager : MonoBehaviour
 
     public void OnPlayerMove()
     {
-        PlaySound(audioClip.footstep, Camera.main.transform.position, 0.1f);
+        PlaySound(audioClip.footstep, Camera.main.transform.position, 0.05f);
     }
 
     public void OnPickedSomething()
