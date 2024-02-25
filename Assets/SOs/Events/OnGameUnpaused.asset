@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38f4adb668f23a84fba3c89a0e7fa040, type: 3}
-  m_Name: OnTimerRunsOut
+  m_Name: OnGameUnpaused
   m_EditorClassIdentifier: 

@@ -4,9 +4,9 @@ using System.Timers;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObject/ScriptableEvent")]
-public class ScriptableEvent : ScriptableObject
+public class ScriptableEvent : ScriptableObject, ISerializationCallbackReceiver
 {
-    private List<ScriptableEventListener> listenerList;
+    private List<ScriptableEventListener> listenerList  = new();
 
     public void Register(ScriptableEventListener _listener)
     {
@@ -28,5 +28,15 @@ public class ScriptableEvent : ScriptableObject
         {
             listenerList[i].OnEventRaised();
         }
+    }
+
+    public void OnBeforeSerialize()
+    {
+        //throw new System.NotImplementedException();
+    }
+
+    public void OnAfterDeserialize()
+    {
+        listenerList.Clear();
     }
 }

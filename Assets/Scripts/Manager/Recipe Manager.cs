@@ -16,6 +16,7 @@ public class RecipeManager : MonoBehaviour
     private float recipeSpawnTimer;
     private float deliveredRecipeScoreValue;
     private float deliveredRecipeTimeValue;
+    public float score;
 
     private void Awake()
     {
@@ -62,8 +63,10 @@ public class RecipeManager : MonoBehaviour
                 
                 if (isPlateMatchingRecipe)
                 {
+
                     deliveredRecipeScoreValue = recipe.RecipeScoreValue;
                     deliveredRecipeTimeValue = recipe.TimeIncrement;
+                    score += deliveredRecipeScoreValue;
                     OnRecipeSuccess.RaiseEvent();
                     waitingRecipeList.RemoveAt(i);
                     OnRecipeCompleted.RaiseEvent();
@@ -114,5 +117,10 @@ public class RecipeManager : MonoBehaviour
     public float GetRecipeTimeIncrease()
     {
         return deliveredRecipeTimeValue;
+    }
+
+    public float GetScore()
+    {
+        return score;
     }
 }

@@ -63,14 +63,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void OnPause(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            
-        }
-    }
-
     private IEnumerator C_DashReset()
     {
         yield return new WaitForSeconds(dashTime);
@@ -108,6 +100,9 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
+        // can't interact if game hasnt started yet
+        if (!GameManager.Instance.isGameInPlayingState()) { return; }
+
         float interactDistance = 2f;
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, interactDistance, countersLayerMask))

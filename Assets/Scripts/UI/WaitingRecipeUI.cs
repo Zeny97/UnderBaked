@@ -6,13 +6,10 @@ public class WaitingRecipeUI : MonoBehaviour
     [SerializeField] private Transform container;
     [SerializeField] private Transform recipeTemplate;
 
-    private void Awake()
-    {
-        recipeTemplate.gameObject.SetActive(false);
-    }
-
     private void Start()
     {
+        recipeTemplate.gameObject.SetActive(false);
+        Hide();
         UpdateVisual();
     }
 
@@ -34,5 +31,27 @@ public class WaitingRecipeUI : MonoBehaviour
             recipeTransform.gameObject.SetActive(true);
             recipeTransform.GetComponent<RecipeTemplateUI>().SetScriptableRecipe(recipe);
         }
+    }
+
+    public void ShowWaitingRecipeUI()
+    {
+        if (GameManager.Instance.isGameInPlayingState())
+        {
+            Show();
+        }
+        else
+        {
+            Hide();
+        }
+    }
+
+    private void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void Show()
+    {
+        gameObject.SetActive(true);
     }
 }
