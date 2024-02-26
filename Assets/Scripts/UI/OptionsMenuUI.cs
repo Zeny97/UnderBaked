@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering;
@@ -10,6 +11,7 @@ public class OptionsMenuUI : MonoBehaviour
     [SerializeField] private Button backButton;
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private TextMeshProUGUI highscoreText;
 
     private void Start()
     {
@@ -36,5 +38,11 @@ public class OptionsMenuUI : MonoBehaviour
     public void Show()
     {
         gameObject.SetActive(true);
+    }
+
+    public void ResetHighscore()
+    {
+        PlayerPrefs.DeleteKey("HighScore");
+        highscoreText.text = PlayerPrefs.GetFloat("HighScore", 0).ToString();
     }
 }

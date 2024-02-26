@@ -21,17 +21,18 @@ public class SoundManager : MonoBehaviour
 
     public void OnDeliveryFailed()
     {
-        PlaySound(audioClip.deliveryFail,Camera.main.transform.position, 0.15f);
+        PlaySound(audioClip.deliveryFail,Camera.main.transform.position, 0.1f);
     }
 
     public void OnDeliverySuccess()
     {
-        PlaySound(audioClip.deliverySuccess, Camera.main.transform.position, 0.15f);
+        PlaySound(audioClip.deliverySuccess, Camera.main.transform.position, 0.1f);
+
     }
 
     public void OnCuttingIngredient()
     {
-        PlaySound(audioClip.chop, Camera.main.transform.position, 0.1f);
+        PlaySound(audioClip.chop, Camera.main.transform.position, 0.05f);
     }
 
     public void OnCookingIngredient()
@@ -46,16 +47,16 @@ public class SoundManager : MonoBehaviour
 
     public void OnPickedSomething()
     {
-        PlaySound(audioClip.objectPickup, Camera.main.transform.position, 0.08f);
+        PlaySound(audioClip.objectPickup, Camera.main.transform.position, 0.05f);
     }
 
     public void OnDroppedSomething()
     {
-        PlaySound(audioClip.objectDrop, Camera.main.transform.position, 0.08f);
+        PlaySound(audioClip.objectDrop, Camera.main.transform.position, 0.05f);
     }
 
     public void OnDroppedIntoTrash()
     {
-        PlaySound(audioClip.trash, Camera.main.transform.position, 0.15f);
+        PlaySound(audioClip.trash, Camera.main.transform.position, 0.1f);
     }
 }

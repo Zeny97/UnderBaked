@@ -21,6 +21,7 @@ public class GamePauseUI : MonoBehaviour
         mainMenuButton.onClick.AddListener(() =>
         {
             Loader.Load(Loader.Scene.MainMenuScene);
+            Time.timeScale = 1f;
         });
 
         Time.timeScale = 1f;
