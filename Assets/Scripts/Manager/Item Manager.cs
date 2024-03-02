@@ -61,6 +61,7 @@ public class ItemManager : MonoBehaviour
 
     public void TransferSpecificItemToPlayer(Transform ingredient)
     {
+        // Change the parent of the item to the players
         ingredient.SetParent(playerItemHolder.transform);
         ingredient.position = playerItemHolder.transform.position;
     }

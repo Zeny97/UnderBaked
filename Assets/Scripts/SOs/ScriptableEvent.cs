@@ -32,7 +32,7 @@ public class ScriptableEvent : ScriptableObject, ISerializationCallbackReceiver
 
     public void OnBeforeSerialize()
     {
-        //throw new System.NotImplementedException();
+
     }
 
     public void OnAfterDeserialize()

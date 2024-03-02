@@ -35,8 +35,7 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        HandleMovement(inputVector);
-        
+        HandleMovement();
     }
 
 
@@ -76,7 +75,7 @@ public class Player : MonoBehaviour
         return isWalking;
     }
 
-    private void HandleMovement(Vector2 _inputVector)
+    private void HandleMovement()
     {
         if (isDashing)
         {
@@ -100,7 +99,7 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
-        // can't interact if game hasnt started yet
+        // can't interact with environment if game isn't in playing state
         if (!GameManager.Instance.isGameInPlayingState()) { return; }
 
         float interactDistance = 2f;

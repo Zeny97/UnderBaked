@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class CombinableItem : Item
 {
-    [SerializeField] protected Item combinableItem;
-
-    public Item CombinedItem()
-    {
-        return combinableItem; 
-    }
+    // These classes are for categorising the items into different subcategories
+    // items with this script attached are combinable items
+    // combinable items can be put on plates
 }

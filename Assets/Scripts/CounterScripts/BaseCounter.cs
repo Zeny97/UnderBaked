@@ -8,10 +8,16 @@ public class BaseCounter : CounterObject
     [SerializeField] private ScriptableEvent OnPickedSomething;
     [SerializeField] private ScriptableEvent OnDroppedSomething;
     [SerializeField] protected Transform CounterItemHolder;
-    [SerializeField] protected Item Ingredient = null;
+    [SerializeField] protected Item Item = null;
 
     public override void InteractWithCounter()
     {
+        // Checks through 4 scenarios
+        // Player has item, Counter has item
+        // Player has item, Counter has no item
+        // Player has no item, Counter has item
+        // Player has no item, Counter has no item
+
         if (ItemManager.Instance.PlayerHasKitchenObject())
         {
             if (HasKitchenObject())
@@ -20,19 +26,21 @@ public class BaseCounter : CounterObject
             }
             else
             {
+                // plays sound clip
                 OnDroppedSomething.RaiseEvent();
                 OnCounterReceivesItem();
             }
         }
         else
         {
-            if (Ingredient == null)
+            if (Item == null)
             {
                 OnNoneHaveItems();
             }
             else 
             {
                 OnPlayerReceivesItem();
+                // plays sound clip
                 OnPickedSomething.RaiseEvent();
             }
 
@@ -42,7 +50,10 @@ public class BaseCounter : CounterObject
 
     protected virtual void OnBothHaveItems()
     {
-
+        // Player should be able to put items on the held plate if its combinable
+        // Check if player has Plate
+        // Check if counterobject is combinable
+        // Put item on plate
         Debug.Log("Player and Counter have an Item.");
     }
 
@@ -56,10 +67,10 @@ public class BaseCounter : CounterObject
         // Player Has Item And Counter Has No Item
         Transform item = ItemManager.Instance.GetItemFromPlayer();
 
-        if (Ingredient != null)
+        if (Item != null)
         {
-            Plate plate = Ingredient.GetComponent<Plate>();
-            
+            // Check if playerheld item is a plate
+            Plate plate = Item.GetComponent<Plate>();
             if (!plate.PutItemOnPlate(item.GetComponent<Item>()))
             {
                 ItemManager.Instance.TransferSpecificItemToPlayer(item);
@@ -71,31 +82,31 @@ public class BaseCounter : CounterObject
         item.SetParent(CounterItemHolder.transform);
         item.position = CounterItemHolder.transform.position;
         item.rotation = CounterItemHolder.transform.rotation;
-        Ingredient = item.GetComponent<Item>();
+        Item = item.GetComponent<Item>();
     }
 
     protected virtual void OnPlayerReceivesItem()
     {
         // Player receives Item from Counter
         ItemManager.Instance.GetItemFromCounter(CounterItemHolder);
-        Ingredient = null;
+        Item = null;
     }
 
     protected virtual bool HasKitchenObject()
     {
-        // return false
-        if (Ingredient == null)
+        // player doesn't have item
+        if (Item == null)
         {
             return false;
         }
 
         // Check if Item is => Plate 
-        if (Ingredient.itemType == Item.E_ItemIdentifier.Plate)
+        if (Item.itemType == Item.E_ItemIdentifier.Plate)
         {
             return false;
         }
 
         // return true => BothHaveItems
-        return Ingredient != null;
+        return Item != null;
     }
 }

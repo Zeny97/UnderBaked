@@ -29,7 +29,6 @@ public class RecipeManager : MonoBehaviour
         {
             instance = this;
         }
-        //DontDestroyOnLoad(gameObject);
     }
 
     private void Update()
@@ -54,7 +53,7 @@ public class RecipeManager : MonoBehaviour
         // Cycle through every waiting recipe
         for (int i = 0; i < waitingRecipeList.Count; i++)
         {
-            // current recipe
+            // Current recipe
             ScriptableRecipe recipe = waitingRecipeList[i];
             // Cancels early if ingredient amount doesnt match
             if (_deliveredPlate.Ingredients.Count == recipe.Ingredients.Count)
@@ -63,7 +62,8 @@ public class RecipeManager : MonoBehaviour
                 
                 if (isPlateMatchingRecipe)
                 {
-
+                    // Updates score and timer
+                    // plays soundclip and removes matched recipe from the waitinglist
                     deliveredRecipeScoreValue = recipe.RecipeScoreValue;
                     deliveredRecipeTimeValue = recipe.TimeIncrement;
                     score += deliveredRecipeScoreValue;
@@ -74,6 +74,7 @@ public class RecipeManager : MonoBehaviour
                 }
             }
         }
+        // Event is called if ingredients matched with no recipe. plays soundclip
         OnRecipeFailed.RaiseEvent();
     }
 

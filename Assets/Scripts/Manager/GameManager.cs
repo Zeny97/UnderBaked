@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        // Game is divided into different states
+        // depending on the state, different events are called, such as hiding or showing different UI elements
         switch (state)
         {
             case State.WaitingToStart:
@@ -69,14 +71,17 @@ public class GameManager : MonoBehaviour
     {
         if (context.performed)
         {
+            // can pause/unpause, because the state gets flipped with the same input
             isGamePaused = !isGamePaused;
             if (isGamePaused)
             {
+                // Game is frozen while Game is Paused
                 Time.timeScale = 0f;
                 OnGamePaused.RaiseEvent();
             }
             else
             {
+                // Game continues when game is unpaused 
                 Time.timeScale = 1f;
                 OnGameUnpaused.RaiseEvent();
             }

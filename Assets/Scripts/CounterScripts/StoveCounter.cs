@@ -21,23 +21,27 @@ public class StoveCounter : ProcessingCounter
 
     protected override void ProcessItem()
     {
-        // Check Item type
+        // Only processes cookable items
         if (ItemToProcess is not CookableItem)
         {
+            // burned meat patty is not cookable, so Warning Icon should get deactivated
             BurnWarning.UpdateWarningStatus(false);
             return;
         }
 
+        // activate sizzling sound
         if (!isAudioPlaying)
         {
             audioSource.Play();
             isAudioPlaying = true;
         }
-        ItemToProcess = Ingredient.GetComponent<CookableItem>();
-        if (Ingredient.itemType == Item.E_ItemIdentifier.MeatPattyCooked)
+
+        // Show warning icon if Meat Patty is Cooked
+        if (Item.itemType == Item.E_ItemIdentifier.MeatPattyCooked)
         {
             BurnWarning.UpdateWarningStatus(true);
         }
+        ItemToProcess = Item.GetComponent<CookableItem>();
         base.ProcessItem();
     }
 
@@ -53,6 +57,7 @@ public class StoveCounter : ProcessingCounter
 
     protected override void OnPlayerReceivesItem()
     {
+        // stop sizzling sound and deactivate warning icon
         audioSource.Stop();
         isAudioPlaying = false;
         base.OnPlayerReceivesItem();

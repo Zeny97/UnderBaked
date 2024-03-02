@@ -12,13 +12,16 @@ public class ProcessingCounter : BaseCounter
 
     private void Start()
     {
+        // show progressbar only when item is being processed
         ProgressBar.transform.gameObject.SetActive(false);
     }
 
     protected virtual void ProcessItem()
     {
+        // Check if Processable Item exists
         if (ItemToProcess != null)
         {
+            // Show Progressbar and Update its fillamount according to its processingtime
             ProgressBar.transform.gameObject.SetActive(true);
             ProgressBar.UpdateProgressBar(CurrentProcessingTime, ItemToProcess.processingTime);
             if (CurrentProcessingTime < ItemToProcess.processingTime)
@@ -26,6 +29,7 @@ public class ProcessingCounter : BaseCounter
                 CurrentProcessingTime += Time.deltaTime;
                 if (CurrentProcessingTime >= ItemToProcess.processingTime)
                 {
+                    // Processing is finished -> deactivate Progressbar
                     OnFinishedProcessingItem();
                     ProgressBar.transform.gameObject.SetActive(false);
                     CurrentProcessingTime = 0;
@@ -38,25 +42,28 @@ public class ProcessingCounter : BaseCounter
     {
         // create finished item and set its location
         ResultingItem = Instantiate(ItemToProcess.ProcessedInto());
-        ResultingItem.transform.SetParent(Ingredient.transform.parent);
-        ResultingItem.transform.position = Ingredient.transform.position;
-        ResultingItem.transform.rotation = Ingredient.transform.rotation;
+        ResultingItem.transform.SetParent(Item.transform.parent);
+        ResultingItem.transform.position = Item.transform.position;
+        ResultingItem.transform.rotation = Item.transform.rotation;
 
         // destroy old item
-        Destroy(Ingredient.gameObject);
+        Destroy(Item.gameObject);
 
-        // fill ingredient slot
-        Ingredient = ResultingItem.GetComponent<Item>();
+        // fill item slot
+        Item = ResultingItem.GetComponent<Item>();
     }
 
     protected override void OnCounterReceivesItem()
     {
+        // In addition to the counter receiving the item, it checks if the item can be processed
         base.OnCounterReceivesItem();
-        ItemToProcess = Ingredient.GetComponent<ProcessableItem>();
+        ItemToProcess = Item.GetComponent<ProcessableItem>();
     }
 
     protected override void OnPlayerReceivesItem()
     {
+        // if player receives item, while item is still being processed, deactivate progressbar and set ItemToProcess to null
+        // Processingprogress is not saved, so item has to be processed again
         if (IsProcessing())
         {
             CurrentProcessingTime = 0;
